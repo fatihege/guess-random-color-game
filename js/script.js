@@ -44,7 +44,7 @@ function mainGame() {
 function giveAlert() {
 	options.forEach(function (option) {
 		option.addEventListener("click", function () {
-			curtain.style.visibility = "visible";
+			curtain.style.zIndex = 5;
 			curtain.style.opacity = 1;
 			alertBox.style.transform = "scale(1)";
 			if (option.classList.contains("true")) {
@@ -57,7 +57,7 @@ function giveAlert() {
 				setTimeout(function () {
 					alertBox.style.transform = "scale(0)";
 					curtain.style.opacity = 0;
-					curtain.style.visibility = "hidden";
+					curtain.style.zIndex = -5;
 					option.classList.remove("true");
 					mainGame();
 				}, 1000);
@@ -75,7 +75,7 @@ function giveAlert() {
 				setTimeout(function () {
 					alertBox.style.transform = "scale(0)";
 					curtain.style.opacity = 0;
-					curtain.style.visibility = "hidden";
+					curtain.style.zIndex = -5;
 					option.classList.remove("true");
 				}, 1000);
 			}
