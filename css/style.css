@@ -103,8 +103,9 @@ body {
 	height: 100vh;
 	background: rgba(0, 0, 0, 0.39);
 	position: fixed;
-	visibility: hidden;
 	opacity: 0;
+	z-index: -5;
+	transition: opacity 0.2s;
 }
 
 #sub-container {
