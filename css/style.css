@@ -84,6 +84,7 @@ body {
 #alert-box {
 	z-index: 10;
 	width: max-content;
+	max-width: 98vw;
 	height: max-content;
 	padding: 50px;
 	font-family: "Inter", sans-serif;
@@ -97,6 +98,58 @@ body {
 	box-shadow: 0px 0px 100px #000;
 	transform: scale(0);
 	transition: transform 0.3s;
+	text-align: center;
+}
+
+#alert-box #selectTime {
+	border: none;
+	padding: 20px;
+	margin: 0;
+	width: 100%;
+	font-size: 25px;
+	cursor: pointer;
+	background: #fff;
+	font-weight: 500;
+	line-height: inherit;
+	outline: none;
+	font-family: "Inter", sans-serif;
+	border: none;
+	border-radius: 5px !important;
+	transition: box-shadow 0.2s;
+}
+
+#alert-box #selectTime:focus {
+	box-shadow: 0 0 0 7px rgba(39, 130, 227, 0.5);
+}
+
+#alert-box #selectTime option {
+	font-weight: 400;
+	font-family: "Inter", sans-serif;
+}
+
+#alert-box button#playButton, #alert-box button#replayButton {
+	width: 100%;
+	height: auto;
+	border: 1px solid #fff;
+	color: #fff;
+	font-size: 25px;
+	padding: 20px;
+	font-weight: 500;
+	background: transparent;
+	font-family: "Inter", sans-serif;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+	transition-property: background, color, box-shadow;
+	cursor: pointer;
+}
+
+#alert-box button#playButton:hover, #alert-box button#replayButton:hover {
+	background: #fff;
+	color: rgb(25, 39, 48);
+}
+
+#alert-box button#playButton:focus, #alert-box button#replayButton:focus {
+	box-shadow: 0 0 0 7px rgba(39, 130, 227, 0.5);
 }
 
 #curtain {
