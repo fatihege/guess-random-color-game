@@ -6,10 +6,6 @@ function $all(elems) {
 	return document.querySelectorAll(elems);
 }
 
-function $id(elemId) {
-	return document.getElementById(elemId);
-}
-
 function randRgb() {
 	return Math.floor(Math.random() * 255).toString();
 }
@@ -50,7 +46,7 @@ function giveAlert() {
 			if (option.classList.contains("true")) {
 				alertBox.innerHTML = "TRUE";
 				alertBox.style.background = "#10dd3c";
-				alertBox.style.boxShadow = "0px 0px 100px #10dd3c";
+				alertBox.style.boxShadow = "0 0 100px #10dd3c";
 				score++;
 				scoreBox.innerText = score;
 
@@ -64,7 +60,7 @@ function giveAlert() {
 			} else {
 				alertBox.innerHTML = "WRONG";
 				alertBox.style.background = "#f71722";
-				alertBox.style.boxShadow = "0px 0px 100px #f71722";
+				alertBox.style.boxShadow = "0 0 100px #f71722";
 				if (score > 0) {
 					score--;
 				} else {
@@ -82,6 +78,57 @@ function giveAlert() {
 		});
 	});
 }
+
+function selectTime() {
+	curtain.style.opacity = 1;
+	curtain.style.zIndex = 5;
+	alertBox.style.transform = "scale(1)";
+	alertBox.style.background = "#192730";
+	alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
+	alertBox.innerHTML = `
+		<select id="selectTime">
+			<option value="2" selected="selected">2 Minute</option>
+			<option value="5">5 Minute</option>
+			<option value="7">7 Minute</option>
+			<option value="10">10 Minute</option>
+		</select>
+		<button id="playButton" onclick="javascript:play();">Play!</button>
+	`;
+	window.selectTime = $("#selectTime");
+}
+
+function play() {
+		window.time = window.selectTime.options[window.selectTime.selectedIndex].value*60000;
+			curtain.style.opacity = 0;
+			curtain.style.zIndex = -5;
+			alertBox.style.transform = "scale(0)";
+			setTimeout(function () {
+				curtain.style.zIndex = 5;
+				curtain.style.opacity = 1;
+				alertBox.style.transform = "scale(1)";
+				alertBox.innerHTML = "FINISHED!<br/><small>Your Score: " + window.score + "</small><br/><small>Selected Time: " + window.selectTime.options[window.selectTime.selectedIndex].text + "</small><br/><button id='replayButton'>Replay</button>";
+				alertBox.style.background = "#19223b";
+				alertBox.style.boxShadow = "0 0 100px #19223b";
+				$("button#replayButton").addEventListener("click", function () {
+					curtain.style.opacity = 1;
+					curtain.style.zIndex = 5;
+					alertBox.style.transform = "scale(1)";
+					alertBox.style.background = "#192730";
+					alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
+					alertBox.innerHTML = `
+						<select id="selectTime">
+							<option value="2" selected="selected">2 Minute</option>
+							<option value="5">5 Minute</option>
+							<option value="7">7 Minute</option>
+							<option value="10">10 Minute</option>
+						</select>
+						<button id="playButton" onclick="javascript:play();">Play!</button>
+					`;
+					window.score = 0;
+				});
+			}, window.time);
+}
+
 window.addEventListener("load", function () {
 	$("#game-container").style.opacity = 0;
 	setTimeout(function () {
@@ -89,4 +136,5 @@ window.addEventListener("load", function () {
 	}, 500);
 	mainGame();
 	giveAlert();
+	selectTime();
 });
