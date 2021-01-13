@@ -87,10 +87,10 @@ function selectTime() {
 	alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
 	alertBox.innerHTML = `
 		<select id="selectTime">
-			<option value="2" selected="selected">2 Minute</option>
-			<option value="5">5 Minute</option>
-			<option value="7">7 Minute</option>
-			<option value="10">10 Minute</option>
+			<option value="2" selected="selected">2 Minutes</option>
+			<option value="5">5 Minutes</option>
+			<option value="7">7 Minutes</option>
+			<option value="10">10 Minutes</option>
 		</select>
 		<button id="playButton" onclick="javascript:play();">Play!</button>
 	`;
@@ -117,10 +117,10 @@ function play() {
 					alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
 					alertBox.innerHTML = `
 						<select id="selectTime">
-							<option value="2" selected="selected">2 Minute</option>
-							<option value="5">5 Minute</option>
-							<option value="7">7 Minute</option>
-							<option value="10">10 Minute</option>
+							<option value="2" selected="selected">2 Minutes</option>
+							<option value="5">5 Minutes</option>
+							<option value="7">7 Minutes</option>
+							<option value="10">10 Minutes</option>
 						</select>
 						<button id="playButton" onclick="javascript:play();">Play!</button>
 					`;
