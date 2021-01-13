@@ -56,7 +56,7 @@ function giveAlert() {
 					curtain.style.zIndex = -5;
 					option.classList.remove("true");
 					mainGame();
-				}, 1000);
+				}, 600);
 			} else {
 				alertBox.innerHTML = "WRONG";
 				alertBox.style.background = "#f71722";
@@ -73,7 +73,7 @@ function giveAlert() {
 					curtain.style.opacity = 0;
 					curtain.style.zIndex = -5;
 					option.classList.remove("true");
-				}, 1000);
+				}, 600);
 			}
 		});
 	});
@@ -98,35 +98,37 @@ function selectTime() {
 }
 
 function play() {
-		window.time = window.selectTime.options[window.selectTime.selectedIndex].value*60000;
-			curtain.style.opacity = 0;
-			curtain.style.zIndex = -5;
-			alertBox.style.transform = "scale(0)";
-			setTimeout(function () {
-				curtain.style.zIndex = 5;
-				curtain.style.opacity = 1;
-				alertBox.style.transform = "scale(1)";
-				alertBox.innerHTML = "FINISHED!<br/><small>Your Score: " + window.score + "</small><br/><small>Selected Time: " + window.selectTime.options[window.selectTime.selectedIndex].text + "</small><br/><button id='replayButton'>Replay</button>";
-				alertBox.style.background = "#19223b";
-				alertBox.style.boxShadow = "0 0 100px #19223b";
-				$("button#replayButton").addEventListener("click", function () {
-					curtain.style.opacity = 1;
-					curtain.style.zIndex = 5;
-					alertBox.style.transform = "scale(1)";
-					alertBox.style.background = "#192730";
-					alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
-					alertBox.innerHTML = `
-						<select id="selectTime">
-							<option value="2" selected="selected">2 Minutes</option>
-							<option value="5">5 Minutes</option>
-							<option value="7">7 Minutes</option>
-							<option value="10">10 Minutes</option>
-						</select>
-						<button id="playButton" onclick="javascript:play();">Play!</button>
-					`;
-					window.score = 0;
-				});
-			}, window.time);
+	window.time = window.selectTime.options[window.selectTime.selectedIndex].value*60000;
+	
+	curtain.style.opacity = 0;
+	curtain.style.zIndex = -5;
+	alertBox.style.transform = "scale(0)";
+	setTimeout(function () {
+		curtain.style.zIndex = 5;
+		curtain.style.opacity = 1;
+		alertBox.style.transform = "scale(1)";
+		alertBox.innerHTML = "FINISHED!<br/><small>Your Score: " + window.score + "</small><br/><small>Selected Time: " + window.selectTime.options[window.selectTime.selectedIndex].text + "</small><br/><button id='replayButton'>Replay</button>";
+		alertBox.style.background = "#19223b";
+		alertBox.style.boxShadow = "0 0 100px #19223b";
+		$("button#replayButton").addEventListener("click", function () {
+			curtain.style.opacity = 1;
+			curtain.style.zIndex = 5;
+			alertBox.style.transform = "scale(1)";
+			alertBox.style.background = "#192730";
+			alertBox.style.boxShadow = "0 0 50px rgba(0, 0, 0, 0.7)";
+			alertBox.innerHTML = `
+				<select id="selectTime">
+					<option value="2" selected="selected">2 Minutes</option>
+					<option value="5">5 Minutes</option>
+					<option value="7">7 Minutes</option>
+					<option value="10">10 Minutes</option>
+				</select>
+				<button id="playButton" onclick="javascript:play();">Play!</button>
+			`;
+			window.score = 0;
+		});
+	}, window.time);
+	
 }
 
 window.addEventListener("load", function () {
